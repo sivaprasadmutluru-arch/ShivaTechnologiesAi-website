@@ -1,0 +1,1 @@
+export function submitEnquiry(request:Request,env:any):Promise<Response>;

@@ -1,0 +1,1 @@
+export function safeProfileImage(value:string):boolean{if(!value)return true;if(value.startsWith('/assets/')&&!value.includes('..')&&!value.includes('\\'))return true;try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password;}catch{return false;}}
