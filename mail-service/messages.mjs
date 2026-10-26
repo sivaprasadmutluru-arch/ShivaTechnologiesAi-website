@@ -17,5 +17,11 @@ export function messages(event, config) {
     if (url.origin !== config.MAIL_SITE_ORIGIN || url.pathname !== '/admin/setup/' || !/^[a-f0-9]{64}$/.test(fragment.get('token') || '') || fragment.get('email') !== event.email) throw Error('Invalid invitation');
     return [{from,to:event.email,subject:'Your Accrue Technologies administrator invitation',text:`You have been invited to manage the Accrue Technologies website.\n\nOpen this private link to choose your password:\n${url.href}\n\nThis invitation expires in 24 hours and can be used once. Do not forward it. If you did not expect this invitation, ignore this email.${signature}`}];
   }
+  if (event.type === 'password_reset') {
+    const url = new URL(event.url);
+    const fragment = new URLSearchParams(url.hash.slice(1));
+    if (url.origin !== config.MAIL_SITE_ORIGIN || url.pathname !== '/admin/reset/' || !/^[a-f0-9]{64}$/.test(fragment.get('token') || '') || fragment.get('email') !== event.email) throw Error('Invalid password reset');
+    return [{from,to:event.email,subject:'Reset your Accrue Technologies admin password',text:`We received a request to reset your Accrue Technologies administrator password.\n\nOpen this private link to choose a new password:\n${url.href}\n\nThis link expires in 30 minutes and can be used once. Do not forward it. If you did not request a password reset, you can ignore this email.${signature}`}];
+  }
   throw Error('Unsupported email event');
 }

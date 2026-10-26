@@ -13,3 +13,4 @@ export const adminCredentials=sqliteTable('admin_credentials',{email:text('email
 export const adminSessions=sqliteTable('admin_sessions',{token_hash:text('token_hash').primaryKey().notNull(),email:text('email').notNull(),expires_at:integer('expires_at').notNull()},table=>[index('session_email_idx').on(table.email)]);
 export const adminInvites=sqliteTable('admin_invites',{token_hash:text('token_hash').primaryKey().notNull(),email:text('email').notNull(),expires_at:integer('expires_at').notNull()});
 export const authAttempts=sqliteTable('auth_attempts',{key:text('key').primaryKey().notNull(),count:integer('count').notNull(),expires_at:integer('expires_at').notNull()});
+export const passwordResets=sqliteTable('password_resets',{token_hash:text('token_hash').primaryKey().notNull(),email:text('email').notNull(),expires_at:integer('expires_at').notNull()},table=>[index('password_reset_email_idx').on(table.email)]);
