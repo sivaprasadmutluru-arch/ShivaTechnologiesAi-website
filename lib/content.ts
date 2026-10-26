@@ -1,4 +1,4 @@
-import {env} from 'cloudflare:workers';
+import {env} from '@/lib/runtime';
 import {defaults,type ContentItem,type Kind} from './default-content';
 export async function listContent(kind:Kind,published=false):Promise<ContentItem[]>{
  const records=await env.DB.prepare('SELECT * FROM content_items WHERE kind=? ORDER BY updated_at DESC').bind(kind).all<ContentItem>();

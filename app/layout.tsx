@@ -5,11 +5,12 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Shiva Technologies AI | AI Innovation Hub",
+  metadataBase: new URL("https://accruetechnologies.com"),
+  title: "Accrue Technologies | AI Innovation Hub",
   description: "Web, mobile and AI engineering. Java, React, React Native, AWS and DevOps from idea to ongoing maintenance.",
   icons: {
-    icon: "/assets/logo.png",
-    shortcut: "/assets/logo.png",
+    icon: "/assets/accrue-logo.svg",
+    shortcut: "/assets/accrue-logo.svg",
   },
 };
 

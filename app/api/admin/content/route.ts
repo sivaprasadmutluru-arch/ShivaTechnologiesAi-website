@@ -1,4 +1,4 @@
-import {env} from 'cloudflare:workers';
+import {env} from '@/lib/runtime';
 import {adminIdentity,apiJson,sameOrigin} from '@/lib/admin-auth';
 import {listContent} from '@/lib/content';
 import type {Kind} from '@/lib/default-content';

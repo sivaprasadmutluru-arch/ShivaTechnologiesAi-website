@@ -2,10 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {messages} from './messages.mjs';
 import {deliverEmail} from '../lib/email.mjs';
-const config={SMTP_USER:'shivatechnologiesai@gmail.com',MAIL_SITE_ORIGIN:'https://example.com'};
+const config={SMTP_USER:'shivatechnologiesai@gmail.com',MAIL_SITE_ORIGIN:'https://example.com',MAIL_NOTIFY_TO:'sivaprasadmutluru@gmail.com'};
 test('enquiry acknowledgement and owner notice use fixed sender and safe subjects',()=>{
  const mail=messages({type:'enquiry',name:'Visitor',email:'visitor@example.com',phone:'12345',reference:'SHV-ABCD1234',category:'Application maintenance',message:'Please help us with our application.'},config);
- assert.equal(mail.length,2);assert.equal(mail[0].to,'visitor@example.com');assert.equal(mail[1].to,config.SMTP_USER);assert.equal(mail[1].replyTo,'visitor@example.com');assert.match(mail[0].text,/SHV-ABCD1234/);
+ assert.equal(mail.length,2);assert.equal(mail[0].to,'visitor@example.com');assert.equal(mail[1].to,config.MAIL_NOTIFY_TO);assert.equal(mail[1].replyTo,'visitor@example.com');assert.match(mail[0].text,/SHV-ABCD1234/);
 });
 test('invitations reject foreign origins and mismatched recipients',()=>{
  const base={type:'invitation',email:'member@example.com',url:`https://example.com/admin/setup/#token=${'a'.repeat(64)}&email=member%40example.com`};

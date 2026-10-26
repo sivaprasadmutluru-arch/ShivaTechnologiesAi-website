@@ -1,4 +1,4 @@
-import {env} from 'cloudflare:workers';
+import {env} from '@/lib/runtime';
 import {apiJson,sameOrigin} from '@/lib/admin-auth';
 import {normalEmail,validEmail,validPassword,hashPassword,digest,readJson,rateLimit} from '@/lib/password-auth';
 export const dynamic='force-dynamic';

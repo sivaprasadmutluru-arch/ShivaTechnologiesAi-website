@@ -4,6 +4,6 @@ SMTP_USER=shivatechnologiesai@gmail.com
 SMTP_PASSWORD=replace-with-private-google-app-password
 MAIL_SERVICE_KEY=replace-with-random-64-character-secret
 MAIL_SITE_ORIGIN=http://127.0.0.1:4173
-MAIL_NOTIFY_TO=shivatechnologiesai@gmail.com
+MAIL_NOTIFY_TO=sivaprasadmutluru@gmail.com
 MAIL_PORT=4180
 MAIL_BIND=127.0.0.1

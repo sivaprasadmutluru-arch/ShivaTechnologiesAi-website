@@ -1,4 +1,4 @@
-import {env} from 'cloudflare:workers';
+import {env} from '@/lib/runtime';
 import {deliverEmail} from '@/lib/email.mjs';
 import {ownerIdentity,apiJson,sameOrigin} from '@/lib/admin-auth';
 import {normalEmail,validEmail,token,digest,readJson} from '@/lib/password-auth';

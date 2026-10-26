@@ -1,0 +1,26 @@
+name: accrue-technologies
+services:
+  website:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_PATH: /data/accrue.sqlite
+      MAIL_SERVICE_URL: http://email:4180/deliver
+    ports:
+      - "127.0.0.1:4183:3000"
+    volumes:
+      - accrue_data:/data
+    depends_on:
+      - email
+    mem_limit: 768m
+  email:
+    build: ./mail-service
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MAIL_BIND: 0.0.0.0
+      MAIL_PORT: 4180
+    mem_limit: 256m
+volumes:
+  accrue_data:
