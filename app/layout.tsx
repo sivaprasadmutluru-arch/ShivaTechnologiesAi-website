@@ -3,6 +3,7 @@ import "./globals.css";
 import './dashboard.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import PageLoader from '@/components/PageLoader';
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://accruetechnologies.com"),
@@ -21,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body><Header /><main id="main">{children}</main><Footer /></body>
+      <body><PageLoader /><Header /><main id="main">{children}</main><Footer /></body>
     </html>
   );
 }
