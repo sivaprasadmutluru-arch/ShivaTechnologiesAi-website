@@ -9,6 +9,23 @@ const technologies = [
   { name: 'Docker', role: 'DevOps', logo: '/assets/technology/docker.svg' },
 ];
 
+const integrations = [
+  { name: 'Twilio', role: 'Communications', logo: '/assets/technology/twilio.svg' },
+  { name: 'Firebase', role: 'Cloud services', logo: '/assets/technology/firebase.svg' },
+  { name: 'Stripe', role: 'Payments', logo: '/assets/technology/stripe.svg' },
+  { name: 'Razorpay', role: 'Payments', logo: '/assets/technology/razorpay.svg' },
+];
+
+type StackItem = (typeof technologies)[number] | (typeof integrations)[number];
+
+function Stack({ items, label }: { items: StackItem[]; label: string }) {
+  return <div className="technology-stack" aria-label={label}>{items.map((item) => <article className="technology-card" key={item.name}><img alt="" aria-hidden="true" className={'wordmark' in item && item.wordmark ? 'technology-logo technology-logo-wordmark' : 'technology-logo'} src={item.logo} /><div><h3>{item.name}</h3><small>{item.role}</small></div></article>)}</div>;
+}
+
 export default function TechnologyStack() {
-  return <div className="technology-stack" id="technology-stack" aria-label="Technology stack">{technologies.map((technology) => <article className="technology-card" key={technology.name}><img alt="" aria-hidden="true" className={technology.wordmark ? 'technology-logo technology-logo-wordmark' : 'technology-logo'} src={technology.logo} /><div><h3>{technology.name}</h3><small>{technology.role}</small></div></article>)}</div>;
+  return <div id="technology-stack"><Stack items={technologies} label="Technology stack" /></div>;
+}
+
+export function IntegrationStack() {
+  return <Stack items={integrations} label="Third-party integrations" />;
 }
